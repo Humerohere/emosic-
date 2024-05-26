@@ -6,7 +6,7 @@
 
 Recommending music based on your facial expressions using the FER 2013 dataset and VGG19 model.
 
-![Demo]
+![emosic-web-animation (1)](https://github.com/Humerohere/emosic-/assets/124302121/de244a95-fd32-4a71-bb2d-14ccd7799be9)
 
 
 ## 🎵 Project Description
@@ -26,14 +26,12 @@ The emotion recognition model uses the VGG19 model trained on the FER 2013 datas
 1. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
+   python app.py
 Run the application:
-
-bash
-Copy code
-python app.py
+   python app.py
 Give camera permission if asked.
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 TensorFlow
 Keras
 Spotipy
@@ -44,12 +42,11 @@ Pygame
 pandas
 numpy
 Jupyter Notebook
-📊 Dataset
+
+## 📊 Dataset
 The dataset used for this project is the FER2013 dataset. Models trained on this dataset can classify 7 emotions. The dataset can be found here.
 
-Note: The dataset is highly imbalanced, with the happy class having the maximum representation. This might result in okayish accuracy after training.
-
-🧠 Model Architecture
+## 🧠 Model Architecture
 The model uses VGG19, a pre-trained Convolutional Neural Network:
 
 VGG19 Backbone: The VGG19 model, pre-trained on ImageNet, is used without the top fully connected layers.
@@ -61,13 +58,14 @@ Training Setup:
 Loss function: Categorical Crossentropy.
 Optimizer: Adam with a learning rate of 0.0001.
 Metrics: Accuracy.
-🎓 Training
-The images were normalized, resized to (48, 48), and converted to grayscale in batches of 64 using ImageDataGenerator in Keras. The training took around 20 minutes and was trained on Kaggle for 6 epochs, achieving an accuracy of approximately 80%.
 
-🔧 Current Condition
+## 🎓 Training
+The images were normalized, resized to (48, 48), and converted to grayscale in batches of 64 using ImageDataGenerator in Keras. The training took around 20 minutes and was trained on Kaggle for 10 epochs, achieving an accuracy of approximately 80%.
+
+## 🔧 Current Condition
 The entire project works perfectly fine. Live detection provides good frame rates due to multithreading.
 
-🛠️ Project Components
+## 🛠️ Project Components
 pygame: Module for establishing connection to and getting tracks from the music file using the pygame music.
 haarcascade: For face detection.
 camera.py: Module for video streaming, frame capturing, prediction, and recommendation, which are passed to main.py.
