@@ -5,7 +5,7 @@
 
 ## 🎵 Project Overview
 
-Emosic is an emotion-powered music recommendation system. It utilizes a facial expression recognition model based on the VGG19 architecture trained on the FER 2013 dataset to detect emotions in real-time from live video feed. Based on the detected emotions, Emosic recommends personalized playlists and seamlessly plays the recommended music.
+Emosic functions as a music recommendation system driven by emotions. It employs a facial expression recognition model rooted in the VGG19 architecture, which is trained on the FER 2013 dataset. This model operates in real-time, analyzing facial expressions from a live video feed to identify emotions. Using these detected emotions, Emosic tailors personalized playlists and effortlessly streams the recommended music selections.
 
 ![Emosic Demo](https://github.com/Humerohere/emosic-/assets/124302121/de244a95-fd32-4a71-bb2d-14ccd7799be9)
 
@@ -61,13 +61,13 @@ The dataset used for this project is the FER2013 dataset, containing facial expr
 
 ## 🎓 Training Process
 
-Images were preprocessed, normalized, resized to (48, 48), and converted to grayscale in batches of 64 using ImageDataGenerator in Keras. The training took around 20 minutes on Kaggle for 10 epochs, achieving an accuracy of approximately 80%.
+The images underwent preprocessing, normalization, resizing to dimensions of 48 by 48 pixels, and conversion to grayscale. This process was conducted in batches of 64 using the ImageDataGenerator tool in Keras. The training phase lasted approximately 20 minutes on the Kaggle platform, running for 10 epochs. The model achieved an accuracy rate of roughly 80%.
 
-## 🔧 Project Status
+## 🔧 Status
 
 The entire project works perfectly fine. Live detection provides good frame rates due to multithreading.
 
-## 🛠️ Important Components
+## 🛠️ Important Project Components
 
 - **pygame:** Module for establishing connection to and getting tracks from the music file using the pygame music.
 - **haarcascade:** For face detection.
