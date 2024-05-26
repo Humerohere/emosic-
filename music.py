@@ -5,17 +5,14 @@ from mutagen.mp3 import MP3
 
 pygame.mixer.init()
 
-# Define a custom event for when the music ends
 MUSIC_END_EVENT = pygame.USEREVENT + 1
 
-# Initialize global variables to keep track of the music files, the current index, and the current emotion
 current_music_files = []
 current_index = 0
 current_emotion = None
 previous_songs = []
 
 def initialize_music():
-    # Main event loop to handle music end events
     running = True
     while running:
         for event in pygame.event.get():
@@ -43,10 +40,8 @@ def start_music(emotion):
                     current_music_files = music_file_list
                     current_index = 0
 
-                    # Shuffle the music file list to randomize the order
                     random.shuffle(current_music_files)
 
-                    # Load and play the first song
                     music_path = os.path.join(music_folder, emotion.lower(), current_music_files[current_index])
                     if os.path.exists(music_path):
                         pygame.mixer.music.load(music_path)
