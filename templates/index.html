@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Emosic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <!-- Bootstrap CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+       <!-- Animate CSS -->
+    <link href="{{ url_for('static', filename='css/animate.min.css') }}" rel="stylesheet">
+        <!-- Basic stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.css') }}">
+        <!-- Font awesome CSS -->
+    <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style-color.css') }}" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- wrapper -->
+    <div class="wrapper" id="home">
+
+        <!-- header area -->
+        <header>
+            <!-- primary menu -->
+            <nav class="navbar navbar-fixed-top navbar-default">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+
+                        <a class="navbar-brand" href="#home">
+                            <!-- logo image -->
+                            <img class="img-responsive" src="{{ url_for('static', filename='img1.jpg') }}" alt="" />
+                        </a>
+                    </div>
+
+                </div>
+            </nav>
+        </header>
+        <!--/ header end -->
+
+        <!-- banner area -->
+        <div class="banner">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img src="{{ url_for('static', filename='img/banner/b1.jpg') }}" alt="...">
+                        <div class="container">
+                            <!-- banner caption -->
+                            <div class="carousel-caption slide-one">
+                                <!-- heading -->
+                                <h2 class="animated fadeInLeftBig"><i class="fa fa-music"></i> Emosic For You!</h2>
+                                <!-- paragraph -->
+                                <h3 class="animated fadeInRightBig">Let the melody of your emotions guide the playlist
+                                    of your soul.</h3>
+                                <!-- button -->
+                                <a href="#" class="animated fadeIn btn btn-theme connection" onclick="scrollToCamera()">Emotion Detector</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{ url_for('static', filename='img/banner/b2.jpg') }}" alt="...">
+                        <div class="container">
+                            <!-- banner caption -->
+                            <div class="carousel-caption slide-two">
+                                <!-- heading -->
+                                <h2 class="animated fadeInLeftBig"><i class="fa fa-headphones"></i> Top Choices...</h2>
+                                <!-- paragraph -->
+                                <h3 class="animated fadeInRightBig">Let the rhythm of your mood lead the melody.</h3>
+                                <!-- button -->
+                                <a href="#" class="animated fadeIn btn btn-theme" onclick="scrollToCamera()">Let's Begin</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="fa fa-arrow-left" aria-hidden="true"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="fa fa-arrow-right" aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
+        <!--/ banner end -->
+
+        <!-- block for animate navigation menu -->
+        <div class="nav-animate"></div>
+
+        <!-- Hero block area -->
+        <div id="latestalbum" class="hero pad">
+            <div class="container">
+                <!-- hero content -->
+                <div class="hero-content ">
+                    <!-- heading -->
+                    <h2>Emosic Magic</h2>
+                    <hr>
+                    <!-- paragraph -->
+                    <p>Let the melody of your <strong class="theme-color">emotions </strong> guide the playlist of your
+                        soul</p>
+                </div>
+                <!-- hero play list -->
+                <div class="hero-playlist">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <!-- Emotion Detector -->
+                            <h2 class="text-center">Emotion Detector</h2>
+                            <div class="text-center" id="cameraSection">
+                                <img id="bg" class="img-fluid" src="{{ url_for('video_feed') }}" />
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <!-- Song Recommendations -->
+                            <div id="ResultArea" class="outer-shadow">
+                                <!-- Song Recommendations will be dynamically added here -->
+                            </div>
+                            <div class="text-center mt-4">
+                            <button style="border-radius:8px; width: 9%;" id="previousButton"><<</button>
+                            <button  id="playButton">Play</button>
+                            <button  id="pauseButton">Pause</button>
+                                <button style="border-radius:8px; width: 9%;" id="nextButton">>></button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ hero end -->
+
+        <!-- footer -->
+        <footer>
+            <div class="container">
+                <!-- copy right -->
+                <p class="copy-right">&copy; copyright 2018, All rights are reserved.</p>
+            </div>
+        </footer>
+        <!-- footer end -->
+
+        <!-- Scroll to top -->
+        <span class="totop"><a href="#"><i class="fa fa-chevron-up"></i></a></span>
+
+    </div>
+
+    <!-- Javascript files -->
+    <!-- jQuery -->
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <script type="text/javascript">
+        // Constantly Update Table
+        setInterval(function() {
+            $.getJSON('/t', function(data) {
+                CreateHtmlTable(data);
+                console.log(data, "DATA");
+            });
+            return false;
+        }, 100);
+
+        // Function to handle playing music
+        $('#playButton').click(function() {
+            $.get('/play_music', function(data) {
+                console.log(data);
+            });
+        });
+
+        // Function to handle pausing music
+        $('#pauseButton').click(function() {
+            $.get('/stop_music', function(data) {
+                console.log(data);
+            });
+        });
+        // Function to handle next music in queue
+        $('#nextButton').click(function() {
+            $.get('/next_song', function(data) {
+                console.log(data);
+            });
+        });
+        // Function to handle previous music in queue
+        $('#previousButton').click(function() {
+            $.get('/previous_song', function(data) {
+                console.log(data);
+            });
+        });
+
+        function scrollToCamera() {
+            var cameraSection = document.getElementById('cameraSection');
+            if (cameraSection) {
+                cameraSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function CreateHtmlTable(data) {
+            //Clear result div
+            $("#ResultArea").html("");
+            //Crate table html tag
+            var table = $("<table class='table table-striped table-light table-bordered table-hover table-sm table-responsive' id=DynamicTable></table>").appendTo("#ResultArea");
+            //Create table header row
+            var rowHeader =
+                $("<tr></tr>").appendTo(table);
+            $("<td></td>").text("Name").appendTo(rowHeader);
+            $("<td></td>").text("Album").appendTo(rowHeader);
+            $("<td></td>").text("Artist").appendTo(rowHeader)
+            //Get JSON data by calling action method in controller
+            $.each(data, function(i, value) {
+
+                //Create new row for each record
+                var row =
+                    $("<tr></tr>").appendTo(table);
+                $("<td></td>").text(value.Name).appendTo(row);
+                $("<td></td>").text(value.Album).appendTo(row);
+                $("<td></td>").text(value.Artist).appendTo(row);
+            });
+        }
+    </script>
+
+
+</body>
+
+</html>
