@@ -65,13 +65,5 @@ def previous_song():
 
 
 if __name__ == '__main__':
-    # music_thread = threading.Thread(target=initialize_music)
-    # music_thread.daemon = True  # Daemonize thread to ensure it closes when the main program exits
-    # music_thread.start()
     app.debug = True
-    #
-    # start_music('Happy')
-    # stop_music()
-    # set_next_song()
-
     app.run()
